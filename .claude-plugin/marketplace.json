@@ -8,12 +8,7 @@
       "name": "personal-assistant",
       "source": "./personal-assistant",
       "description": "A plugin to turn Claude Code into your personal assistant"
-    },
-    {
-      "name": "creator-stack",
-      "source": "./creator-stack",
-      "description": "A complete content creation toolkit — writing, content strategy, visual design, AI image generation, branding, and YouTube/Substack platform workflows"
-    },
+    }
 {
       "name": "agent-teams",
       "source": "./agent-teams",
