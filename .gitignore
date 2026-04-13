@@ -1,0 +1,48 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+venv/
+env/
+
+# Claude
+.claude/
+
+# MacOS
+.DS_Store
+
+# Uv
+uv.lock
+
+# Environment variables
+.env
+
+# Logs
+*.log
+logs/
+
+# IDE
+.vscode/
+.idea/
+
+# Temporary files
+temp/
+tmp/
+*.tmp
+
+# Worktrees
+.worktrees/
+
+# Local-only folders
+.archive/
+.docs/
+.evals/
+
+# Test workspaces (ephemeral test run data)
+*-test-workspace/

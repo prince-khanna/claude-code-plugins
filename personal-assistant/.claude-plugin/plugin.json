@@ -1,0 +1,9 @@
+{
+  "name": "personal-assistant",
+  "description": "A plugin to turn Claude Code into your personal assistant with native context delivery, proactive triggers, and self-improving memory",
+  "version": "1.0.1",
+  "author": {
+    "name": "Prince Khanna",
+    "url": "https://github.com/prince-khanna"
+  }
+}

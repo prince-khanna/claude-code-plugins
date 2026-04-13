@@ -1,0 +1,9 @@
+{
+  "name": "scheduler",
+  "description": "A plugin for scheduling automated Claude Code tasks — cross-platform (macOS, Linux, Windows) recurring and one-off execution of skills, prompts, and scripts with safety controls and notifications",
+  "version": "1.0.0",
+  "author": {
+    "name": "Prince Khanna (Prince Plugins)",
+    "url": "https://github.com/prince-khanna"
+  }
+}

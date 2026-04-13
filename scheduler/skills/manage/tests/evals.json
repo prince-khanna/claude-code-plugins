@@ -1,0 +1,72 @@
+{
+  "skill_name": "manage",
+  "skill_type": "task",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want to schedule a task that runs the creator-stack:generate-note-ideas skill every Monday at 8am. Call it 'Weekly note ideas'. Use default safety limits and default permissions.",
+      "expected_output": "Walks through the Add workflow, confirms cron expression, presents summary table, and runs scheduler.py add with correct flags",
+      "files": [],
+      "expectations": [
+        "Identifies the Add operation from the user's request",
+        "Generates a slug ID from the task name (e.g., weekly-note-ideas)",
+        "Converts 'every Monday at 8am' to cron expression 0 8 * * 1",
+        "Presents a summary table with fields: ID, Name, Type, Target, Frequency, Schedule, Max turns, Timeout, Permissions",
+        "Runs a scheduler.py add command with --type skill and --target creator-stack:generate-note-ideas",
+        "Reports creation success and mentions the next run time"
+      ],
+      "tags": ["happy-path", "add"]
+    },
+    {
+      "id": 2,
+      "prompt": "Show me all my scheduled tasks.",
+      "expected_output": "Runs the List operation and handles empty or populated results appropriately",
+      "files": [],
+      "expectations": [
+        "Identifies the List operation from the user's request",
+        "Runs scheduler.py list command",
+        "If no tasks exist, says 'No scheduled tasks yet' or equivalent empty-state message"
+      ],
+      "tags": ["happy-path", "list"]
+    },
+    {
+      "id": 3,
+      "prompt": "Schedule a one-time task for tomorrow at 9am to research today's AI news. Use research permissions. Call it 'Morning news pulse'.",
+      "expected_output": "Creates a one-off prompt task with research permissions and a date-specific cron expression",
+      "files": [],
+      "expectations": [
+        "Identifies the task as one-off frequency (not recurring)",
+        "Converts 'tomorrow at 9am' to a cron expression that includes specific day and month fields",
+        "Includes --run-once flag in the scheduler.py add command",
+        "Includes --permission-preset research in the scheduler.py add command",
+        "Presents a summary table showing Frequency as 'One-off' and Permissions as 'research'"
+      ],
+      "tags": ["one-off", "permissions", "add"]
+    },
+    {
+      "id": 4,
+      "prompt": "Remove the weekly-note-ideas scheduled task.",
+      "expected_output": "Identifies Remove operation and asks for confirmation before executing the destructive action",
+      "files": [],
+      "expectations": [
+        "Identifies the Remove operation from the user's request",
+        "Asks for explicit confirmation before removing (does not remove immediately without asking)",
+        "Runs scheduler.py remove --id weekly-note-ideas after confirmation"
+      ],
+      "tags": ["remove", "destructive", "confirmation"]
+    },
+    {
+      "id": 5,
+      "prompt": "Test the weekly-note-ideas task right now.",
+      "expected_output": "Uses the deferred scheduling approach instead of running scheduler.py run directly, since running inside an active Claude session",
+      "files": [],
+      "expectations": [
+        "Identifies this as a Run Now operation",
+        "Does NOT attempt to run scheduler.py run directly (would fail inside an active Claude session)",
+        "Uses the deferred scheduling approach: reads current cron, reschedules to ~2 minutes from now, and plans to restore original cron after",
+        "Mentions that the task will fire in approximately 2 minutes"
+      ],
+      "tags": ["run-now", "edge-case"]
+    }
+  ]
+}
