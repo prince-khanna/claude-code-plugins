@@ -10,7 +10,6 @@ Lightweight reference for how plugins and skills are structured in this marketpl
 
 | Type              | Examples                                                     | Purpose                                                                                           |
 | ----------------- | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- |
-| **Domain bundle** | `creator-stack`                                              | Tightly coupled skills that share dependencies and call each other — consolidated into one plugin |
 | **Standalone**    | `personal-assistant`, `research`, `scheduler`, `agent-teams` | Self-contained, no cross-plugin dependencies                                                      |
 
 **When to create a new plugin:** Only when the new skill has zero runtime dependencies on existing plugins AND users would want it independently. If it calls `creator-stack` skills, it goes in `creator-stack`.
