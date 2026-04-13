@@ -25,11 +25,7 @@ If the file doesn't exist or is empty, create it with the content below. If the 
 
 ```json
 {
-  "outputStyle": "personal-assistant:Personal Assistant",
-  "statusLine": {
-    "type": "command",
-    "command": "INPUT=$(cat); STYLE_NAME=$(echo \"$INPUT\" | jq -r '.output_style.name // \"default\"'); STYLE_PLUGIN=$(echo \"$INPUT\" | jq -r '.output_style.plugin // \"\"'); MODEL=$(echo \"$INPUT\" | jq -r '.model.display_name // \"default\"'); STYLE_DISPLAY=\"$STYLE_NAME\"; PLUGINS=$(ls -1d ~/.claude/plugins/marketplaces/*/ 2>/dev/null | wc -l | tr -d ' '); TOOLS=$(uv tool list 2>/dev/null | grep -c ' v[0-9]' || echo 0); CC_MCPS=$(cat ~/.claude/mcp.json 2>/dev/null | jq '.mcpServers | length // 0' || echo 0); PROJ_MCPS=$(cat .mcp.json 2>/dev/null | jq '.mcpServers | length // 0' || echo 0); MCPL_MCPS=$(mcpl list 2>/dev/null | grep -c '^[[:space:]]*\\[' || echo 0); MCPS=$((CC_MCPS + PROJ_MCPS + MCPL_MCPS)); if [ \"$CC_MCPS\" -eq \"$MCPL_MCPS\" ]; then MCPS=$((CC_MCPS + PROJ_MCPS)); fi; COST=$(echo \"$INPUT\" | jq -r '.cost.total_cost_usd // 0'); TIME=$(echo \"$INPUT\" | jq -r '.cost.total_duration_ms // 0'); if [ \"$TIME\" -lt 60000 ]; then SECS=$((TIME / 1000)); TIME_DISPLAY=\"${SECS}s\"; elif [ \"$TIME\" -lt 3600000 ]; then MINS=$((TIME / 60000)); SECS=$(((TIME % 60000) / 1000)); TIME_DISPLAY=\"${MINS}m ${SECS}s\"; else HOURS=$((TIME / 3600000)); MINS=$(((TIME % 3600000) / 60000)); TIME_DISPLAY=\"${HOURS}h ${MINS}m\"; fi; printf \"%s | %s\\n%s Plugins | %s UV | %s MCPs\\n\\$%.2f | %s\" \"$STYLE_DISPLAY\" \"$MODEL\" \"$PLUGINS\" \"$TOOLS\" \"$MCPS\" \"$COST\" \"$TIME_DISPLAY\""
-  }
+  "outputStyle": "personal-assistant:imli"
 }
 ```
 
