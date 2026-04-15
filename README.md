@@ -17,7 +17,7 @@ Individual plugins may have additional requirements — refer to each plugin's R
 2. Add the marketplace:
 
 ```
-/plugin marketplace add https://github.com/prince-khanna/claude-code-plugins.git --name prince-plugins
+/plugin marketplace add https://github.com/prince-khanna/claude-code-plugins.git
 ```
 
 3. Browse and install plugins interactively with `/plugin`.
